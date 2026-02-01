@@ -110,7 +110,7 @@ export default function BlogPage() {
         <div className={styles.container}>
           <div className={styles.searchContainer}>
             <div className={styles.searchBox}>
-              <Search size={20} className="text-slate-400" />
+              <Search size={20} color="var(--text-muted)" />
               <input 
                 type="text" 
                 placeholder="Cari artikel inspirasi..." 
@@ -118,9 +118,9 @@ export default function BlogPage() {
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
-            <div className="flex items-center gap-2 px-4 border-l border-slate-100 hidden md:flex">
-              <Filter size={18} className="text-slate-400" />
-              <span className="text-sm font-bold text-slate-500 uppercase tracking-wider">Kategori</span>
+            <div className={styles.categoryFilter}>
+              <Filter size={18} color="var(--text-muted)" />
+              <span className={styles.filterLabel}>Kategori</span>
             </div>
           </div>
         </div>
