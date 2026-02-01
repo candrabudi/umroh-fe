@@ -1,1 +1,30 @@
+/* Page Layout */
+.pageWrapper {
+  min-height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  position: relative;
+}
 
+.mainContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #ffffff;
+}
+
+/* Optional: Add a subtle grain or noise logic here if we wanted extra texture */
+/* .pageWrapper::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url('/noise.png');
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+} */

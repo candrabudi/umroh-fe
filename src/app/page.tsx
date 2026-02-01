@@ -12,13 +12,14 @@ import Gallery from "@/components/home/Gallery/Gallery";
 import Branches from "@/components/home/Branches/Branches";
 import Blog from "@/components/home/Blog/Blog";
 import Footer from "@/components/layout/Footer";
+import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+    <div className={styles.pageWrapper}>
       <TopBar />
       <Header />
-      <main>
+      <main className={styles.mainContent}>
         <Hero />
         <VisiMisi />
         <Features />
