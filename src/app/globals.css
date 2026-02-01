@@ -34,14 +34,7 @@
   --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.03);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0f172a;
-    --surface: #1e293b;
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
-  }
-}
+/* Dark Mode overrides removed to maintain consistent branding */
 
 * {
   box-sizing: border-box;

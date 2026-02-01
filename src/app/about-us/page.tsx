@@ -1,7 +1,7 @@
 import Header from '@/components/layout/Header';
 import TopBar from '@/components/layout/TopBar';
 import Footer from '@/components/layout/Footer';
-import { Shield, Target, Heart, Users, Award, BookOpen, Fingerprint } from 'lucide-react';
+import { Shield, Target, Heart, Users, Award, BookOpen, Fingerprint, Sparkles, Quote } from 'lucide-react';
 import Image from 'next/image';
 import styles from './AboutUs.module.css';
 
@@ -11,7 +11,7 @@ export default function AboutUs() {
       <TopBar />
       <Header />
 
-      {/* Modern Hero */}
+      {/* Modern Cinematic Hero */}
       <section className={styles.hero}>
         <div className={styles.heroImage}>
           <img 
@@ -21,48 +21,36 @@ export default function AboutUs() {
         </div>
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
-          <span className={styles.heroBadge}>Our Story</span>
+          <span className={styles.heroBadge}>Indah • Aman • Terpercaya</span>
           <h1 className={styles.heroTitle}>
-            Wujudkan Perjalanan Suci <br />
-            <span className={styles.accent}>Sesuai Sunnah</span>
+            Mendampingi Perjalanan <br />
+            <span className={styles.accent}>Menuju Ridho-Nya</span>
           </h1>
+          <p className={styles.heroSubtitle}>
+            Berdedikasi memberikan pelayanan Umroh dan Haji terbaik dengan bimbingan 
+            ibadah yang sesuai tuntunan Sunnah Rasulullah ﷺ.
+          </p>
         </div>
       </section>
 
-      {/* Brand Identity / Story */}
+      {/* Brand Identity / Story Section */}
       <section className={styles.section}>
         <div className={styles.container}>
           <div className={styles.grid}>
             <div className={styles.storyContent}>
-              <div className={styles.heroBadge}>Independence & Trust</div>
-              <h2>Melayani Lebih Dari Sekedar <span className={styles.accent}>Perjalanan</span></h2>
+              <div className={styles.heroBadge} style={{ background: 'rgba(26, 35, 39, 0.05)', color: 'var(--primary)', borderColor: 'rgba(0,0,0,0.1)' }}>Our History</div>
+              <h2>Melayani Lebih Dari Sekedar <span className={styles.accent} style={{ display: 'block' }}>Perjalanan Wisata</span></h2>
               <div className={styles.storyText}>
                 <p>
-                  <strong>Sanur Indah Travel</strong> lahir dari visi sederhana: mengembalikan esensi perjalanan ibadah kepada ketulusan dan kepatuhan syariat (Sunnah). Kami bukan sekadar agen perjalanan; kami adalah mitra spiritual Anda.
+                  <strong>Sanur Indah Travel</strong> berdiri dengan satu komitmen utama: Mengembalikan esensi ibadah kepada kenyamanan dan kepatuhan syariat. Kami percaya setiap jamaah adalah tamu Allah yang berhak mendapatkan kemuliaan dalam pelayanannya.
                 </p>
                 <div className={styles.highlightCard}>
-                  "Kekhusyukan Anda adalah prioritas kami. Setiap detail perjalanan dikurasi untuk kenyamanan fisik dan ketenangan jiwa."
+                  <Quote size={40} className="absolute top-8 left-8 opacity-10" />
+                  Kepercayaan yang diberikan ribuan jamaah setiap tahunnya adalah amanah yang kami jaga dengan integritas dan profesionalitas tinggi.
                 </div>
-                <p style={{ marginTop: '2rem' }}>
-                  Dengan pengalaman bertahun-tahun melayani ribuan jamaah, kami memahami bahwa setiap perjalanan adalah unik. Itulah mengapa kami mengutamakan bimbingan personal dan fasilitas premium di setiap langkah Anda.
+                <p>
+                  Dengan bimbingan para asatidz yang berkompeten, kami memastikan setiap tahapan manasik hingga pelaksanaan ibadah di tanah suci berjalan sesuai dengan dalil yang shahih, demi mengejar Umroh yang Maqbula dan Haji yang Mabrur.
                 </p>
-              </div>
-
-              <div className={styles.statsSection}>
-                <div className={styles.statsGrid}>
-                  <div className={styles.statItem}>
-                    <span className={styles.statNumber}>10+</span>
-                    <span className={styles.statLabel}>Years Experience</span>
-                  </div>
-                  <div className={styles.statItem}>
-                    <span className={styles.statNumber}>15k+</span>
-                    <span className={styles.statLabel}>Happy Pilgrims</span>
-                  </div>
-                  <div className={styles.statItem}>
-                    <span className={styles.statNumber}>100%</span>
-                    <span className={styles.statLabel}>Success Rate</span>
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -75,34 +63,52 @@ export default function AboutUs() {
               />
             </div>
           </div>
+
+          {/* Floating Stats */}
+          <div className={styles.statsContainer}>
+            <div className={styles.statsGrid}>
+              <div className={styles.statItem}>
+                <span className={styles.statNumber}>10+</span>
+                <span className={styles.statLabel}>Tahun Melayani</span>
+              </div>
+              <div className={styles.statItem}>
+                <span className={styles.statNumber}>15K+</span>
+                <span className={styles.statLabel}>Jamaah Puas</span>
+              </div>
+              <div className={styles.statItem}>
+                <span className={styles.statNumber}>100%</span>
+                <span className={styles.statLabel}>Resmi Kemenag</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Core Values Section */}
-      <section className={`${styles.section} ${styles.valuesSection}`}>
+      {/* Core Values Section - Dark Theme Transition */}
+      <section className={styles.valuesSection}>
         <div className={styles.container}>
           <div className={styles.valuesHeader}>
-            <div className={styles.heroBadge}>Core Principles</div>
-            <h2>Fondasi Layanan <span className={styles.accent}>Kami</span></h2>
+            <div className={styles.heroBadge} style={{ marginBottom: '2rem' }}>Prinsip Utama</div>
+            <h2>Mengapa Pilih <span className={styles.accent}>Sanur Travel?</span></h2>
           </div>
 
           <div className={styles.valuesGrid}>
             <div className={styles.valueCard}>
-              <div className={styles.valueIcon}><Fingerprint size={32} /></div>
-              <h3>Indetitas Syar'i</h3>
-              <p>Seluruh program perjalanan dipandu oleh Ustadz berpengalaman yang memastikan setiap rukun ibadah sesuai dengan Al-Qur'an dan Sunnah.</p>
+              <div className={styles.valueIcon}><Fingerprint size={40} /></div>
+              <h3>Bimbingan Syar'i</h3>
+              <p>Setiap program dikurasi ketat oleh dewan syariah kami untuk memastikan seluruh rukun dan wajib ibadah sesuai Sunnah.</p>
             </div>
 
             <div className={styles.valueCard}>
-              <div className={styles.valueIcon}><Shield size={32} /></div>
-              <h3>Keamanan Finansial</h3>
-              <p>Transparansi penuh mulai dari pembayaran hingga keberangkatan. Dana Anda aman karena kami memiliki legalitas resmi PPIU & PIHK.</p>
+              <div className={styles.valueIcon}><Shield size={40} /></div>
+              <h3>Aman & Legal</h3>
+              <p>Memiliki izin PPIU dan PIHK resmi dari Kementerian Agama RI. Keamanan dana dan keberangkatan Anda terjamin secara hukum.</p>
             </div>
 
             <div className={styles.valueCard}>
-              <div className={styles.valueIcon}><Award size={32} /></div>
+              <div className={styles.valueIcon}><Sparkles size={40} /></div>
               <h3>Layanan Premium</h3>
-              <p>Pilihan hotel terdekat dengan Masjidil Haram dan Masjid Nabawi, serta transportasi yang nyaman untuk kenyamanan ibadah Anda.</p>
+              <p>Akomodasi hotel bintang 5 dengan jarak tempuh ke Masjidil Haram yang minimalis, demi menjaga stamina ibadah Anda.</p>
             </div>
           </div>
         </div>
@@ -110,11 +116,13 @@ export default function AboutUs() {
 
       {/* Global Partnership Section */}
       <section className={styles.partnersSection}>
-        <div className={styles.container} style={{ textAlign: 'center' }}>
-          <div className={styles.heroBadge}>Legacy</div>
-          <h2 style={{ fontSize: '3rem', marginBottom: '3rem', color: 'var(--primary)' }}>Bekerja Sama Dengan <span className={styles.accent}>Terbaik</span></h2>
-          <p style={{ color: 'var(--text-muted)', maxWidth: '700px', margin: '0 auto 4rem' }}>
-            Kami menjalin kemitraan strategis dengan maskapai penerbangan internasional dan jaringan hotel bintang 5 di Arab Saudi untuk menjamin kualitas layanan yang tak tertandingi.
+        <div className={styles.container}>
+          <div className={styles.heroBadge} style={{ background: 'rgba(26, 35, 39, 0.05)', color: 'var(--primary)' }}>Kemitraan Strategis</div>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '3rem', margin: '2rem 0', color: 'var(--primary)' }}>
+            Standar Kualitas <span className={styles.accent}>Global</span>
+          </h2>
+          <p style={{ color: 'var(--text-muted)', maxWidth: '800px', margin: '0 auto', fontSize: '1.2rem' }}>
+            Kami bekerjasama dengan ekosistem travel internasional terbaik untuk memastikan kenyamanan Anda dari tanah air hingga tanah suci.
           </p>
           
           <div className={styles.partnersGrid}>
@@ -123,6 +131,7 @@ export default function AboutUs() {
             <span className={styles.partnerLogo}>HILTON</span>
             <span className={styles.partnerLogo}>MARRIOTT</span>
             <span className={styles.partnerLogo}>ACCOR</span>
+            <span className={styles.partnerLogo}>ANAS</span>
           </div>
         </div>
       </section>

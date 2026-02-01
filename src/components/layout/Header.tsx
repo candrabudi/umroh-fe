@@ -3,7 +3,10 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { User } from 'lucide-react';
+import { 
+  User, Home, Package, BookOpen, Users, Info, 
+  Phone as PhoneIcon, Mail, Instagram, Facebook, Youtube, X 
+} from 'lucide-react';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -71,10 +74,11 @@ export default function Header() {
           {/* Desktop Nav */}
           <nav className={styles.nav}>
             <Link href="/" className={styles.navLink}>Beranda</Link>
-            <Link href="#packages" className={styles.navLink}>Paket</Link>
-            <Link href="#halal-tour" className={styles.navLink}>Wisata</Link>
-            <Link href="/about-us" className={styles.navLink}>Tentang</Link>
+            <Link href="/packages" className={styles.navLink}>Paket</Link>
+            <Link href="/blog" className={styles.navLink}>Artikel</Link>
             <Link href="/keagenan" className={styles.navLink}>Keagenan</Link>
+            <Link href="/about-us" className={styles.navLink}>Tentang</Link>
+            <Link href="/contact" className={styles.navLink}>Kontak</Link>
           </nav>
 
           <div className={styles.actions}>
@@ -99,19 +103,49 @@ export default function Header() {
       {/* Mobile Menu Drawer */}
       <div className={`${styles.mobileNav} ${isMobileMenuOpen ? styles.mobileNavOpen : ''}`}>
         <div className={styles.mobileNavHeader}>
-          <span className={styles.logoText} style={{ color: 'white' }}>MENU</span>
+          <span className={styles.logoText} style={{ color: 'white' }}>MENU UTAMA</span>
           <button className={styles.closeBtn} onClick={() => setIsMobileMenuOpen(false)}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            <X size={24} />
           </button>
         </div>
         
         <div className={styles.mobileLinks}>
-          <Link href="/" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>Beranda</Link>
-          <Link href="#packages" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>Paket Umroh</Link>
-          <Link href="#halal-tour" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>Wisata Halal</Link>
-          <Link href="/about-us" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>Tentang Kami</Link>
-          <Link href="/keagenan" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>Keagenan</Link>
-          <Link href="#contact" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>Kontak</Link>
+          <Link href="/" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>
+            <div className={styles.mobileLinkIcon}><Home size={22} /></div>
+            <span>Beranda</span>
+          </Link>
+          <Link href="/packages" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>
+            <div className={styles.mobileLinkIcon}><Package size={22} /></div>
+            <span>Paket Umroh</span>
+          </Link>
+          <Link href="/blog" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>
+            <div className={styles.mobileLinkIcon}><BookOpen size={22} /></div>
+            <span>Artikel Islami</span>
+          </Link>
+          <Link href="/keagenan" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>
+            <div className={styles.mobileLinkIcon}><Users size={22} /></div>
+            <span>Kemitraan Agen</span>
+          </Link>
+          <Link href="/about-us" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>
+            <div className={styles.mobileLinkIcon}><Info size={22} /></div>
+            <span>Tentang Kami</span>
+          </Link>
+          <Link href="/contact" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>
+            <div className={styles.mobileLinkIcon}><PhoneIcon size={22} /></div>
+            <span>Hubungi Kami</span>
+          </Link>
+        </div>
+
+        <div className={styles.mobileNavFooter}>
+          <div className={styles.mobileContactInfo}>
+            <p>Konsultasi 24/7:</p>
+            <a href="tel:+6281234567890" className={styles.mobilePhone}>+62 812 3456 7890</a>
+          </div>
+          <div className={styles.mobileSocials}>
+            <Link href="#" className={styles.socialIcon}><Instagram size={20} /></Link>
+            <Link href="#" className={styles.socialIcon}><Facebook size={20} /></Link>
+            <Link href="#" className={styles.socialIcon}><Youtube size={20} /></Link>
+          </div>
         </div>
       </div>
       

@@ -1,4 +1,5 @@
 import { MapPin, Phone, Smartphone, Mail, Facebook, Instagram, Twitter } from 'lucide-react';
+import Link from 'next/link';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -40,10 +41,10 @@ export default function Footer() {
           <div className={styles.footerSection}>
             <h4 className={styles.footerTitle}>Layanan</h4>
             <ul className={styles.footerLinks}>
-              <li><a href="#packages">Paket Umroh</a></li>
-              <li><a href="#haji">Haji Furoda</a></li>
-              <li><a href="#halal-tour">Wisata Halal</a></li>
-              <li><a href="#tabungan">Tabungan Umroh</a></li>
+              <li><Link href="/packages">Paket Umroh</Link></li>
+              <li><Link href="/packages">Haji Furoda</Link></li>
+              <li><Link href="/packages">Wisata Halal</Link></li>
+              <li><Link href="/contact">Hubungi Kami</Link></li>
             </ul>
           </div>
 

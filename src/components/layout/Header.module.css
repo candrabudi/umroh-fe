@@ -199,17 +199,32 @@
 .hamburger:hover .bar:nth-child(3) { transform: translateY(1px); }
 
 /* Mobile Menu */
+/* Luxurious Mobile Menu */
 .mobileNav {
   position: fixed;
   inset: 0;
-  background: rgba(10, 15, 13, 0.95);
-  backdrop-filter: blur(20px);
+  background: rgba(10, 15, 13, 0.98);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
   z-index: 2000;
-  padding: 2rem;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobileNav::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+  opacity: 0.1;
+  filter: blur(60px);
+  pointer-events: none;
 }
 
 .mobileNavOpen {
@@ -226,43 +241,147 @@
 .mobileLinks {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
+  flex: 1;
+  justify-content: center;
 }
 
 .mobileNavLink {
   color: white;
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 800;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0.5rem 0;
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.mobileNavOpen .mobileNavLink {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger entrance animations */
+.mobileNavOpen .mobileNavLink:nth-child(1) { transition-delay: 0.2s; }
+.mobileNavOpen .mobileNavLink:nth-child(2) { transition-delay: 0.3s; }
+.mobileNavOpen .mobileNavLink:nth-child(3) { transition-delay: 0.4s; }
+.mobileNavOpen .mobileNavLink:nth-child(4) { transition-delay: 0.5s; }
+.mobileNavOpen .mobileNavLink:nth-child(5) { transition-delay: 0.6s; }
+.mobileNavOpen .mobileNavLink:nth-child(6) { transition-delay: 0.7s; }
+
+.mobileLinkIcon {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: all 0.3s ease;
 }
 
-.mobileNavLink:hover {
+.mobileNavLink:hover .mobileLinkIcon {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--primary);
+  transform: rotate(-10deg) scale(1.1);
+}
+
+.mobileNavLink:hover span {
   color: var(--accent);
   transform: translateX(10px);
 }
 
+.mobileNavLink span {
+  transition: all 0.3s ease;
+}
+
 .closeBtn {
-  width: 44px;
-  height: 44px;
-  background: rgba(255, 255, 255, 0.1);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.closeBtn:hover {
+  background: white;
+  color: var(--primary);
+  transform: rotate(90deg);
+}
+
+.mobileNavFooter {
+  margin-top: auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease 0.8s;
+}
+
+.mobileNavOpen .mobileNavFooter {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobileContactInfo p {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.mobilePhone {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.mobileSocials {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialIcon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
   z-index: 1099;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.4s ease;
 }
 
 .mobileNavOpen ~ .overlay {
