@@ -1,5 +1,5 @@
 .section {
-  padding: var(--spacing-xxl) 0;
+  padding: var(--spacing-xl) var(--spacing-md);
   background-color: #f9fbfb;
   position: relative;
 }

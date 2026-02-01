@@ -5,7 +5,11 @@ import Header from '@/components/layout/Header';
 import TopBar from '@/components/layout/TopBar';
 import Footer from '@/components/layout/Footer';
 import Link from 'next/link';
-import { Calendar, Clock, Hotel, Users, MapPin, Plane, Star, Search, Filter } from 'lucide-react';
+import { 
+  Calendar, Clock, Hotel, Users, MapPin, 
+  Plane, Star, Search, Filter, ArrowRight,
+  Sparkles, Compass, Shield
+} from 'lucide-react';
 import styles from './Packages.module.css';
 
 const allPackages = [
@@ -106,42 +110,73 @@ export default function PackagesPage() {
       <TopBar />
       <Header />
 
-      {/* Hero */}
+      {/* Hero Section */}
       <section className={styles.hero}>
-        <div className={styles.heroContent} style={{ marginTop: '4rem' }}>
-          <span className={styles.heroBadge}>Pilih Keberangkatan</span>
+        <div className={styles.heroBackground}>
+          <img 
+            src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+            alt="Hero Background" 
+          />
+        </div>
+        <div className={styles.heroOverlay} />
+        <div className={styles.heroContent}>
+          <div className={styles.heroBadge}>
+            <Sparkles size={14} />
+            <span>Pilih Keberangkatan Anda</span>
+          </div>
           <h1 className={styles.heroTitle}>
-            Paket Perjalanan <span className={styles.accent}>Terbaik</span>
+            Paket Perjalanan <br /> <span className={styles.accent}>Terbaik & Terpercaya</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.7)', marginTop: '1rem', fontSize: '1.1rem' }}>
-            Temukan jadwal keberangkatan yang sesuai dengan rencana ibadah dan liburan Anda.
+          <p className={styles.heroDescription}>
+            Temukan jadwal keberangkatan yang sesuai dengan rencana ibadah dan liburan Anda dengan layanan premium kami.
           </p>
         </div>
       </section>
 
-      {/* Filters & Search */}
+      {/* Sticky Filters & Search */}
       <section className={styles.filterSection}>
-        <div className={styles.filterContainer}>
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              className={`${styles.filterBtn} ${activeCategory === cat ? styles.filterBtnActive : ''}`}
-              onClick={() => setActiveCategory(cat)}
-            >
-              {cat}
-            </button>
-          ))}
+        <div className={styles.container}>
+          <div className={styles.filterHeader}>
+            <div className={styles.filterContainer}>
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  className={`${styles.filterBtn} ${activeCategory === cat ? styles.filterBtnActive : ''}`}
+                  onClick={() => setActiveCategory(cat)}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            <div className={styles.searchWrapper}>
+              <Search className={styles.searchIcon} size={18} />
+              <input 
+                type="text" 
+                placeholder="Cari paket perjalanan..." 
+                className={styles.searchInput}
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Package Grid */}
+      {/* Package Grid Section */}
       <section className={styles.section}>
         <div className={styles.container}>
+          <div className={styles.resultsCount}>
+            Menampilkan <span>{filteredPackages.length}</span> Paket Perjalanan
+          </div>
+
           <div className={styles.grid}>
             {filteredPackages.map((pkg) => (
               <div key={pkg.id} className={styles.card}>
                 <div className={styles.imageWrapper}>
+                  <div className={styles.catBadge}>{pkg.category}</div>
                   <img src={pkg.image} alt={pkg.title} />
+                  <div className={styles.imageOverlay} />
                   <div className={styles.priceTag}>Rp{pkg.price}</div>
                 </div>
                 
@@ -150,35 +185,50 @@ export default function PackagesPage() {
                   
                   <div className={styles.infoGrid}>
                     <div className={styles.infoItem}>
-                      <span className={styles.infoLabel}>Berangkat</span>
-                      <div className={styles.infoValue}>
-                        <Calendar size={16} /> {pkg.jadwal}
+                      <div className={styles.iconCircle}><Calendar size={18} /></div>
+                      <div className={styles.infoDetails}>
+                        <span className={styles.infoLabel}>Berangkat</span>
+                        <span className={styles.infoValue}>{pkg.jadwal}</span>
                       </div>
                     </div>
+                    
                     <div className={styles.infoItem}>
-                      <span className={styles.infoLabel}>Durasi</span>
-                      <div className={styles.infoValue}>
-                        <Clock size={16} /> {pkg.durasi}
+                      <div className={styles.iconCircle}><Clock size={18} /></div>
+                      <div className={styles.infoDetails}>
+                        <span className={styles.infoLabel}>Durasi</span>
+                        <span className={styles.infoValue}>{pkg.durasi}</span>
                       </div>
                     </div>
+
                     <div className={styles.infoItem}>
-                      <span className={styles.infoLabel}>Hotel</span>
-                      <div className={styles.infoValue}>
-                        {[...Array(pkg.hotel)].map((_, i) => (
-                          <Star key={i} size={14} fill="var(--accent)" stroke="var(--accent)" />
-                        ))}
+                      <div className={styles.iconCircle}><Hotel size={18} /></div>
+                      <div className={styles.infoDetails}>
+                        <span className={styles.infoLabel}>Hotel</span>
+                        <div className={styles.stars}>
+                          {[...Array(5)].map((_, i) => (
+                            <Star 
+                              key={i} 
+                              size={12} 
+                              fill={i < pkg.hotel ? "var(--accent)" : "rgba(0,0,0,0.1)"} 
+                              stroke={i < pkg.hotel ? "var(--accent)" : "rgba(0,0,0,0.1)"} 
+                            />
+                          ))}
+                        </div>
                       </div>
                     </div>
+
                     <div className={styles.infoItem}>
-                      <span className={styles.infoLabel}>Maskapai</span>
-                      <div className={styles.infoValue}>
-                        <Plane size={16} /> {pkg.maskapai.split(' ')[0]}
+                      <div className={styles.iconCircle}><Plane size={18} /></div>
+                      <div className={styles.infoDetails}>
+                        <span className={styles.infoLabel}>Maskapai</span>
+                        <span className={styles.infoValue}>{pkg.maskapai.split(' ')[0]}</span>
                       </div>
                     </div>
                   </div>
 
-                  <Link href={`/packages/${pkg.id}`} className={styles.btnDetail} style={{ display: 'block', textAlign: 'center', textDecoration: 'none' }}>
+                  <Link href={`/packages/${pkg.id}`} className={styles.btnDetail}>
                     Lihat Detail Paket
+                    <ArrowRight size={18} />
                   </Link>
                 </div>
               </div>
@@ -186,10 +236,14 @@ export default function PackagesPage() {
           </div>
 
           {filteredPackages.length === 0 && (
-            <div style={{ textAlign: 'center', padding: '4rem 0' }}>
-              <Search size={48} style={{ opacity: 0.2, marginBottom: '1.5rem' }} />
-              <h3 style={{ color: 'var(--primary)' }}>Paket tidak ditemukan</h3>
-              <p style={{ color: 'var(--text-muted)' }}>Coba cari dengan kategori atau kata kunci lain.</p>
+            <div className={styles.emptyContent}>
+              <div className={styles.emptyIcon}>
+                <Search size={40} />
+              </div>
+              <h3>Paket tidak ditemukan</h3>
+              <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem' }}>
+                Coba sesuaikan kategori atau kata kunci pencarian Anda.
+              </p>
             </div>
           )}
         </div>

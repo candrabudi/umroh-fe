@@ -1,8 +1,12 @@
 import Header from '@/components/layout/Header';
 import TopBar from '@/components/layout/TopBar';
 import Footer from '@/components/layout/Footer';
-import { Shield, Target, Heart, Users, Award, BookOpen, Fingerprint, Sparkles, Quote } from 'lucide-react';
-import Image from 'next/image';
+import { 
+  Shield, Target, Heart, Users, Award, 
+  BookOpen, Fingerprint, Sparkles, Quote, 
+  CheckCircle2, Globe2, Compass, ShieldCheck,
+  Star, Trophy, Users2
+} from 'lucide-react';
 import styles from './AboutUs.module.css';
 
 export default function AboutUs() {
@@ -11,127 +15,177 @@ export default function AboutUs() {
       <TopBar />
       <Header />
 
-      {/* Modern Cinematic Hero */}
+      {/* --- Elegant Cinematic Hero --- */}
       <section className={styles.hero}>
         <div className={styles.heroImage}>
           <img 
             src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" 
-            alt="Spiritual Journey" 
+            alt="Spiritual Sanctuary" 
           />
         </div>
         <div className={styles.heroOverlay} />
         <div className={styles.heroContent}>
-          <span className={styles.heroBadge}>Indah • Aman • Terpercaya</span>
+          <div className={styles.heroBadge}>
+            <Sparkles size={14} />
+            <span>Excellence • Reliability • Integrity</span>
+          </div>
           <h1 className={styles.heroTitle}>
-            Mendampingi Perjalanan <br />
-            <span className={styles.accent}>Menuju Ridho-Nya</span>
+            Crafting Journeys <br />
+            <span className={styles.accent}>to the Divine</span>
           </h1>
           <p className={styles.heroSubtitle}>
-            Berdedikasi memberikan pelayanan Umroh dan Haji terbaik dengan bimbingan 
-            ibadah yang sesuai tuntunan Sunnah Rasulullah ﷺ.
+            Dedicated to providing the ultimate Umrah and Hajj experiences 
+            with spiritual guidance rooted in the prophetic tradition.
           </p>
+          <div className={styles.heroScroll}>
+            <div className={styles.mouseIndicator}>
+              <div className={styles.mouseWheel} />
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Brand Identity / Story Section */}
-      <section className={styles.section}>
+      {/* --- Legacy & Vision --- */}
+      <section className={styles.storySection}>
         <div className={styles.container}>
-          <div className={styles.grid}>
-            <div className={styles.storyContent}>
-              <div className={styles.heroBadge} style={{ background: 'rgba(26, 35, 39, 0.05)', color: 'var(--primary)', borderColor: 'rgba(0,0,0,0.1)' }}>Our History</div>
-              <h2>Melayani Lebih Dari Sekedar <span className={styles.accent} style={{ display: 'block' }}>Perjalanan Wisata</span></h2>
-              <div className={styles.storyText}>
+          <div className={styles.storyGrid}>
+            <div className={styles.storyTextWrapper}>
+              <div className={styles.labelHighlight}>Our Legacy</div>
+              <h2 className={styles.sectionTitle}>
+                More Than Just <br />
+                <span className={styles.accent}>Travel Experiences</span>
+              </h2>
+              <div className={styles.storyParagraphs}>
                 <p>
-                  <strong>Sanur Indah Travel</strong> berdiri dengan satu komitmen utama: Mengembalikan esensi ibadah kepada kenyamanan dan kepatuhan syariat. Kami percaya setiap jamaah adalah tamu Allah yang berhak mendapatkan kemuliaan dalam pelayanannya.
+                  <strong>Sanur Indah Travel</strong> was founded on a singular commitment: 
+                  restoring the essence of pilgrimage to supreme comfort and strict 
+                  adherence to Sharia principles.
                 </p>
-                <div className={styles.highlightCard}>
-                  <Quote size={40} className="absolute top-8 left-8 opacity-10" />
-                  Kepercayaan yang diberikan ribuan jamaah setiap tahunnya adalah amanah yang kami jaga dengan integritas dan profesionalitas tinggi.
+                <div className={styles.quoteBox}>
+                  <Quote size={32} className={styles.quoteIcon} />
+                  <p>
+                    The trust placed in us by thousands of pilgrims every year is a sacred 
+                    amanah we safeguard with high integrity and professionalism.
+                  </p>
                 </div>
                 <p>
-                  Dengan bimbingan para asatidz yang berkompeten, kami memastikan setiap tahapan manasik hingga pelaksanaan ibadah di tanah suci berjalan sesuai dengan dalil yang shahih, demi mengejar Umroh yang Maqbula dan Haji yang Mabrur.
+                  With guidance from specialized scholars, we ensure every step of your 
+                  pilgrimage—from rituals to the stay in the holy lands—aligns with 
+                  authentic tradition.
                 </p>
               </div>
             </div>
 
-            <div className={styles.showcase}>
-              <div className={styles.imageOverlay} />
-              <img 
-                src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
-                alt="Sanur Indah Experience" 
-                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-              />
+            <div className={styles.storyVisual}>
+              <div className={styles.visualMain}>
+                <img 
+                  src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                  alt="Pilgrim Experience" 
+                />
+                <div className={styles.floatingAward}>
+                  <Trophy size={20} />
+                  <span>Certified Excellence</span>
+                </div>
+              </div>
+              <div className={styles.visualDecor} />
             </div>
           </div>
 
-          {/* Floating Stats */}
-          <div className={styles.statsContainer}>
+          {/* Precision Stats */}
+          <div className={styles.statsPanel}>
             <div className={styles.statsGrid}>
-              <div className={styles.statItem}>
-                <span className={styles.statNumber}>10+</span>
-                <span className={styles.statLabel}>Tahun Melayani</span>
+              <div className={styles.statBox}>
+                <div className={styles.statIcon}><Compass size={24} /></div>
+                <span className={styles.statNum}>10+</span>
+                <span className={styles.statSub}>Years of Service</span>
               </div>
-              <div className={styles.statItem}>
-                <span className={styles.statNumber}>15K+</span>
-                <span className={styles.statLabel}>Jamaah Puas</span>
+              <div className={styles.statBox}>
+                <div className={styles.statIcon}><Users2 size={24} /></div>
+                <span className={styles.statNum}>15K+</span>
+                <span className={styles.statSub}>Satisfied Pilgrims</span>
               </div>
-              <div className={styles.statItem}>
-                <span className={styles.statNumber}>100%</span>
-                <span className={styles.statLabel}>Resmi Kemenag</span>
+              <div className={styles.statBox}>
+                <div className={styles.statIcon}><ShieldCheck size={24} /></div>
+                <span className={styles.statNum}>100%</span>
+                <span className={styles.statSub}>Legal & Certified</span>
+              </div>
+              <div className={styles.statBox}>
+                <div className={styles.statIcon}><Star size={24} /></div>
+                <span className={styles.statNum}>4.9/5</span>
+                <span className={styles.statSub}>Service Rating</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Core Values Section - Dark Theme Transition */}
+      {/* --- Core Values - Prestige Grid --- */}
       <section className={styles.valuesSection}>
         <div className={styles.container}>
           <div className={styles.valuesHeader}>
-            <div className={styles.heroBadge} style={{ marginBottom: '2rem' }}>Prinsip Utama</div>
-            <h2>Mengapa Pilih <span className={styles.accent}>Sanur Travel?</span></h2>
+            <div className={styles.labelHighlight}>Core Pillars</div>
+            <h2 className={styles.sectionTitle}>Why Choose Sanur?</h2>
+            <p className={styles.sectionDesc}>
+              We set the gold standard in pilgrimage services through unwavering 
+              dedication to these fundamental principles.
+            </p>
           </div>
 
           <div className={styles.valuesGrid}>
             <div className={styles.valueCard}>
-              <div className={styles.valueIcon}><Fingerprint size={40} /></div>
-              <h3>Bimbingan Syar'i</h3>
-              <p>Setiap program dikurasi ketat oleh dewan syariah kami untuk memastikan seluruh rukun dan wajib ibadah sesuai Sunnah.</p>
+              <div className={styles.vIconContainer}>
+                <BookOpen size={28} />
+              </div>
+              <h3>Sharia Guidance</h3>
+              <p>Every program is strictly curated by our Sharia board to ensure all rituals comply with the prophetic Sunnah.</p>
+              <ul className={styles.vList}>
+                <li><CheckCircle2 size={16} /> Authentic Rituals</li>
+                <li><CheckCircle2 size={16} /> Specialized Mentors</li>
+              </ul>
             </div>
 
             <div className={styles.valueCard}>
-              <div className={styles.valueIcon}><Shield size={40} /></div>
-              <h3>Aman & Legal</h3>
-              <p>Memiliki izin PPIU dan PIHK resmi dari Kementerian Agama RI. Keamanan dana dan keberangkatan Anda terjamin secara hukum.</p>
+              <div className={styles.vIconContainer}>
+                <ShieldCheck size={28} />
+              </div>
+              <h3>Legal Security</h3>
+              <p>Fully licensed by the Ministry of Religious Affairs (PPIU & PIHK). Your funds and departure are legally protected and guaranteed.</p>
+              <ul className={styles.vList}>
+                <li><CheckCircle2 size={16} /> Official Licensing</li>
+                <li><CheckCircle2 size={16} /> Financial Integrity</li>
+              </ul>
             </div>
 
             <div className={styles.valueCard}>
-              <div className={styles.valueIcon}><Sparkles size={40} /></div>
-              <h3>Layanan Premium</h3>
-              <p>Akomodasi hotel bintang 5 dengan jarak tempuh ke Masjidil Haram yang minimalis, demi menjaga stamina ibadah Anda.</p>
+              <div className={styles.vIconContainer}>
+                <Sparkles size={28} />
+              </div>
+              <h3>Premium Logistics</h3>
+              <p>Handpicked 5-star accommodations with minimal distance to the Holy Mosques, prioritizing your stamina and worship focus.</p>
+              <ul className={styles.vList}>
+                <li><CheckCircle2 size={16} /> 5-Star Hospitality</li>
+                <li><CheckCircle2 size={16} /> Elite Transportation</li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Global Partnership Section */}
+      {/* --- Strategic Partners --- */}
       <section className={styles.partnersSection}>
         <div className={styles.container}>
-          <div className={styles.heroBadge} style={{ background: 'rgba(26, 35, 39, 0.05)', color: 'var(--primary)' }}>Kemitraan Strategis</div>
-          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '3rem', margin: '2rem 0', color: 'var(--primary)' }}>
-            Standar Kualitas <span className={styles.accent}>Global</span>
-          </h2>
-          <p style={{ color: 'var(--text-muted)', maxWidth: '800px', margin: '0 auto', fontSize: '1.2rem' }}>
-            Kami bekerjasama dengan ekosistem travel internasional terbaik untuk memastikan kenyamanan Anda dari tanah air hingga tanah suci.
-          </p>
+          <div className={styles.partnerHeader}>
+            <div className={styles.labelHighlight}>Global Alliance</div>
+            <h2 className={styles.sectionTitle}>Global Quality <span className={styles.accent}>Standards</span></h2>
+          </div>
           
           <div className={styles.partnersGrid}>
-            <span className={styles.partnerLogo}>SAUDIA</span>
-            <span className={styles.partnerLogo}>GARUDA</span>
-            <span className={styles.partnerLogo}>HILTON</span>
-            <span className={styles.partnerLogo}>MARRIOTT</span>
-            <span className={styles.partnerLogo}>ACCOR</span>
-            <span className={styles.partnerLogo}>ANAS</span>
+            <div className={styles.pLogoBox}><span>SAUDIA</span></div>
+            <div className={styles.pLogoBox}><span>GARUDA</span></div>
+            <div className={styles.pLogoBox}><span>HILTON</span></div>
+            <div className={styles.pLogoBox}><span>MARRIOTT</span></div>
+            <div className={styles.pLogoBox}><span>ACCOR</span></div>
+            <div className={styles.pLogoBox}><span>EMIRATES</span></div>
           </div>
         </div>
       </section>

@@ -1,5 +1,5 @@
 .section {
-  padding: var(--spacing-xxl) 0;
+  padding: var(--spacing-xl) var(--spacing-md);
   background-color: #ffffff;
   position: relative;
 }
@@ -133,8 +133,9 @@
 /* Product Grid */
 .productGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
   gap: 2rem;
+  width: 100%;
 }
 
 .productCard {

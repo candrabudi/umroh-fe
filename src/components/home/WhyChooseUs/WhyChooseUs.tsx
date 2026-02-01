@@ -1,41 +1,40 @@
-import { ShieldCheck, BookOpen, Users, Handshake, Bus, Award, GraduationCap } from 'lucide-react';
+import { 
+  ShieldCheck, BookOpen, Users, Handshake, 
+  Bus, Award, GraduationCap, Star, 
+  Sparkles, Fingerprint, Crown
+} from 'lucide-react';
 import styles from './WhyChooseUs.module.css';
 
 const reasons = [
   {
-    icon: <ShieldCheck size={32} />,
-    title: "Terpercaya",
-    desc: "Resmi terdaftar di Kementrian Agama Republik Indonesia dengan Izin Umrah Nomor 183 Tahun 2020"
+    icon: <ShieldCheck size={28} />,
+    title: "Official Compliance",
+    desc: "Formally registered with the Ministry of Religious Affairs RI under License No. 183 Year 2020."
   },
   {
-    icon: <BookOpen size={32} />,
-    title: "Sesuai Syariat Islam",
-    desc: "Semua kegiatan yang dilakukan mulai dari Manasik hingga Ibadah Umrah atau Haji InsyaAllah sesuai Al-Quran dan As-sunnah"
+    icon: <Fingerprint size={28} />,
+    title: "Syariah Integrity",
+    desc: "Every phase of our pilgrimage, from training to rituals, strictly adheres to authentic Prophetic Sunnah."
   },
   {
-    icon: <GraduationCap size={32} />,
-    title: "Kajian Agama di Saudi",
-    desc: "Aktifitas Jemaah selama di Saudi akan dipenuhi dengan kajian Majelis ilmu untuk memperdalam pemahaman ibadah."
+    icon: <GraduationCap size={28} />,
+    title: "Spiritual Enrichment",
+    desc: "Active religious lectures and circles during the stay in Saudi Arabia to deepen spiritual understanding."
   },
   {
-    icon: <Users size={32} />,
-    title: "Tim Lapangan Berizin",
-    desc: "Muthawif dan Tim Lapangan adalah Orang Indonesia yang berizin tinggal resmi dan memahami keilmuan Sunnah."
+    icon: <Users size={28} />,
+    title: "Certified Field Experts",
+    desc: "Our Muthawif and field team are Indonesian residents with official permits and religious mastery."
   },
   {
-    icon: <Award size={32} />,
-    title: "Pembimbing Profesional",
-    desc: "Dibimbing oleh pembimbing amanah, berkompeten dan berpengalaman selama bertahun-tahun di bidangnya."
+    icon: <Crown size={28} />,
+    title: "Elite Mentorship",
+    desc: "Guided by competent, trustworthy mentors with decades of experience in Holy Land logistics."
   },
   {
-    icon: <Bus size={32} />,
-    title: "Fasilitas Terbaik",
-    desc: "Penerbangan IATA, Bus Full AC, dan Hotel berbintang yang dekat dengan Masjidil Haram & Masjid Nabawi."
-  },
-  {
-    icon: <Handshake size={32} />,
-    title: "Kemitraan Resmi LA",
-    desc: "Bekerjasama dengan Muasasah berizin resmi Kementrian Haji & Umrah Saudi sebagai penyedia Land Arrangement."
+    icon: <Bus size={28} />,
+    title: "Premier Logistics",
+    desc: "IATA-certified flights, climate-controlled transport, and hotels within walking distance of the Harams."
   }
 ];
 
@@ -44,25 +43,28 @@ export default function WhyChooseUs() {
     <section className={styles.section} id="why-us">
       <div className={styles.container}>
         <div className={styles.headerArea}>
-          <div className={styles.badgeLine}>
-            <span className={styles.dot}></span>
-            <span className={styles.badgeText}>Keunggulan Kami</span>
+          <div className={styles.badgeLabel}>
+            <Sparkles size={14} className={styles.sparkle} />
+            <span>Unrivaled Excellence</span>
           </div>
-          <h2 className={styles.title}>Mengapa Memilih Kami?</h2>
+          <h2 className={styles.title}>Why Strategic Partners <br/><span className={styles.accent}>Choose Sanur?</span></h2>
           <p className={styles.subtitle}>
-            Membantu saudara muslim sebanyak-banyaknya untuk bisa berangkat Umrah & Haji dengan mudah dan nyaman.
+            A decade of delivering excellence, integrity, and spiritual comfort to thousands of families.
           </p>
         </div>
 
         <div className={styles.grid}>
           {reasons.map((reason, index) => (
             <div key={index} className={styles.card}>
-              <div className={styles.iconWrapper}>
+              <div className={styles.iconContainer}>
                 {reason.icon}
               </div>
               <h3 className={styles.cardTitle}>{reason.title}</h3>
               <p className={styles.cardDesc}>{reason.desc}</p>
-              <div className={styles.cardGlow}></div>
+              
+              <div className={styles.cardIndicator}>
+                 <Star size={12} fill="currentColor" />
+              </div>
             </div>
           ))}
         </div>

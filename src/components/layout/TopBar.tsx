@@ -1,20 +1,27 @@
+import { Phone, Mail, Instagram, Facebook, Youtube } from 'lucide-react';
 import styles from './TopBar.module.css';
 
 export default function TopBar() {
   return (
-    <div className={styles.topBar}>
+    <div className={styles.topBar} suppressHydrationWarning>
       <div className={styles.container}>
-        <div className={styles.links}>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            +62 812 3456 7890
-          </span>
-          <span style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            info@sanurindahtravel.com
-          </span>
+        <div className={styles.contactInfo}>
+          <a href="tel:+6281234567890" className={styles.topLink}>
+            <Phone size={14} />
+            <span>+62 812 3456 7890</span>
+          </a>
+          <div className={styles.divider} />
+          <a href="mailto:info@sanurindahtravel.com" className={styles.topLink}>
+            <Mail size={14} />
+            <span>info@sanurindahtravel.com</span>
+          </a>
         </div>
 
+        <div className={styles.socialInfo}>
+          <a href="#" className={styles.socialLink} aria-label="Instagram"><Instagram size={14} /></a>
+          <a href="#" className={styles.socialLink} aria-label="Facebook"><Facebook size={14} /></a>
+          <a href="#" className={styles.socialLink} aria-label="Youtube"><Youtube size={14} /></a>
+        </div>
       </div>
     </div>
   );

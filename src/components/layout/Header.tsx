@@ -2,10 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { 
   User, Home, Package, BookOpen, Users, Info, 
-  Phone as PhoneIcon, Mail, Instagram, Facebook, Youtube, X 
+  Phone as PhoneIcon, Instagram, Facebook, Youtube, X, Menu
 } from 'lucide-react';
 import styles from './Header.module.css';
 
@@ -16,30 +15,25 @@ export default function Header() {
   const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
-    let ticking = false;
-    
     const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const currentScrollY = window.scrollY;
-          
-          // Update scrolled state for styling
-          setIsScrolled(currentScrollY > 40);
-          
-          // Always stay visible
-          setIsVisible(true);
-          
-          setLastScrollY(currentScrollY);
-          ticking = false;
-        });
-        ticking = true;
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 40);
+      
+      // Optional: Hide header on scroll down, show on scroll up
+      if (currentScrollY > lastScrollY && currentScrollY > 200) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
       }
+      
+      setLastScrollY(currentScrollY);
     };
     
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
+  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -48,37 +42,43 @@ export default function Header() {
     }
   }, [isMobileMenuOpen]);
 
-  const toggleMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  const navLinks = [
+    { href: '/', label: 'Beranda', icon: <Home size={22} /> },
+    { href: '/packages', label: 'Paket Umroh', icon: <Package size={22} /> },
+    { href: '/blog', label: 'Artikel', icon: <BookOpen size={22} /> },
+    { href: '/partnership', label: 'Partnership', icon: <Users size={22} /> },
+    { href: '/about-us', label: 'Tentang', icon: <Info size={22} /> },
+    { href: '/contact', label: 'Kontak', icon: <PhoneIcon size={22} /> },
+  ];
 
   return (
     <>
-      <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${!isVisible ? styles.hidden : ''}`}>
+      <header 
+        className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${!isVisible ? styles.hidden : ''}`}
+        suppressHydrationWarning
+      >
         <div className={styles.headerContainer}>
           <Link href="/" className={styles.logo}>
-            <img 
-              src={isScrolled ? "/logo-dark.png" : "/logo-light.png"} 
-              alt="SANUR INDAH TRAVEL" 
-              style={{ height: isScrolled ? '40px' : '56px', width: 'auto', transition: 'all 0.3s ease' }} 
-              onError={(e) => {
-                // Fallback if logo-dark doesn't exist
-                if (isScrolled) (e.target as HTMLImageElement).style.filter = 'brightness(0) saturate(100%) invert(15%) sepia(15%) grow(0.5)';
-              }}
-            />
-            <span className={styles.logoText}>
-              SANUR<br/>INDAH TRAVEL
-            </span>
+            <div className={styles.logoWrapper}>
+              <img 
+                src={isScrolled ? "/logo-dark.png" : "/logo-light.png"} 
+                alt="SANUR INDAH TRAVEL" 
+                className={styles.logoImg}
+              />
+            </div>
+            <div className={styles.logoBrand}>
+              <span className={styles.brandMain}>SANUR</span>
+              <span className={styles.brandSub}>INDAH TRAVEL</span>
+            </div>
           </Link>
           
           {/* Desktop Nav */}
           <nav className={styles.nav}>
-            <Link href="/" className={styles.navLink}>Beranda</Link>
-            <Link href="/packages" className={styles.navLink}>Paket</Link>
-            <Link href="/blog" className={styles.navLink}>Artikel</Link>
-            <Link href="/keagenan" className={styles.navLink}>Keagenan</Link>
-            <Link href="/about-us" className={styles.navLink}>Tentang</Link>
-            <Link href="/contact" className={styles.navLink}>Kontak</Link>
+            {navLinks.map((link) => (
+              <Link key={link.href} href={link.href} className={styles.navLink}>
+                {link.label}
+              </Link>
+            ))}
           </nav>
 
           <div className={styles.actions}>
@@ -89,12 +89,10 @@ export default function Header() {
             
             <button 
               className={`${styles.hamburger} ${isMobileMenuOpen ? styles.active : ''}`} 
-              onClick={toggleMenu}
-              aria-label="Toggle menu"
+              onClick={() => setIsMobileMenuOpen(true)}
+              aria-label="Open menu"
             >
-              <span className={styles.bar}></span>
-              <span className={styles.bar}></span>
-              <span className={styles.bar}></span>
+              <Menu size={24} color={isScrolled ? "var(--primary)" : "white"} />
             </button>
           </div>
         </div>
@@ -102,57 +100,50 @@ export default function Header() {
       
       {/* Mobile Menu Drawer */}
       <div className={`${styles.mobileNav} ${isMobileMenuOpen ? styles.mobileNavOpen : ''}`}>
-        <div className={styles.mobileNavHeader}>
-          <span className={styles.logoText} style={{ color: 'white' }}>MENU UTAMA</span>
-          <button className={styles.closeBtn} onClick={() => setIsMobileMenuOpen(false)}>
-            <X size={24} />
-          </button>
-        </div>
-        
-        <div className={styles.mobileLinks}>
-          <Link href="/" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>
-            <div className={styles.mobileLinkIcon}><Home size={22} /></div>
-            <span>Beranda</span>
-          </Link>
-          <Link href="/packages" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>
-            <div className={styles.mobileLinkIcon}><Package size={22} /></div>
-            <span>Paket Umroh</span>
-          </Link>
-          <Link href="/blog" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>
-            <div className={styles.mobileLinkIcon}><BookOpen size={22} /></div>
-            <span>Artikel Islami</span>
-          </Link>
-          <Link href="/keagenan" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>
-            <div className={styles.mobileLinkIcon}><Users size={22} /></div>
-            <span>Kemitraan Agen</span>
-          </Link>
-          <Link href="/about-us" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>
-            <div className={styles.mobileLinkIcon}><Info size={22} /></div>
-            <span>Tentang Kami</span>
-          </Link>
-          <Link href="/contact" className={styles.mobileNavLink} onClick={() => setIsMobileMenuOpen(false)}>
-            <div className={styles.mobileLinkIcon}><PhoneIcon size={22} /></div>
-            <span>Hubungi Kami</span>
-          </Link>
-        </div>
-
-        <div className={styles.mobileNavFooter}>
-          <div className={styles.mobileContactInfo}>
-            <p>Konsultasi 24/7:</p>
-            <a href="tel:+6281234567890" className={styles.mobilePhone}>+62 812 3456 7890</a>
+        <div className={styles.mobileNavCard}>
+          <div className={styles.mobileNavHeader}>
+            <div className={styles.mobileLogoInside}>
+              <span className={styles.brandMain}>SANUR</span>
+              <span className={styles.brandSub}>INDAH TRAVEL</span>
+            </div>
+            <button className={styles.closeBtn} onClick={() => setIsMobileMenuOpen(false)}>
+              <X size={24} />
+            </button>
           </div>
-          <div className={styles.mobileSocials}>
-            <Link href="#" className={styles.socialIcon}><Instagram size={20} /></Link>
-            <Link href="#" className={styles.socialIcon}><Facebook size={20} /></Link>
-            <Link href="#" className={styles.socialIcon}><Youtube size={20} /></Link>
+          
+          <div className={styles.mobileLinks}>
+            {navLinks.map((link) => (
+              <Link 
+                key={link.href} 
+                href={link.href} 
+                className={styles.mobileNavLink} 
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <div className={styles.mobileLinkIcon}>{link.icon}</div>
+                <span>{link.label}</span>
+              </Link>
+            ))}
+          </div>
+
+          <div className={styles.mobileNavFooter}>
+            <div className={styles.mobileContactBox}>
+              <p>Konsultasi 24/7:</p>
+              <a href="tel:+6281234567890" className={styles.mobilePhone}>+62 812 3456 7890</a>
+            </div>
+            <div className={styles.mobileSocials}>
+              <Link href="#" className={styles.socialIcon}><Instagram size={20} /></Link>
+              <Link href="#" className={styles.socialIcon}><Facebook size={20} /></Link>
+              <Link href="#" className={styles.socialIcon}><Youtube size={20} /></Link>
+            </div>
           </div>
         </div>
       </div>
       
-      {/* Overlay */}
-      {isMobileMenuOpen && (
-        <div className={styles.overlay} onClick={() => setIsMobileMenuOpen(false)} />
-      )}
+      {/* Overlay Background */}
+      <div 
+        className={`${styles.overlay} ${isMobileMenuOpen ? styles.overlayVisible : ''}`} 
+        onClick={() => setIsMobileMenuOpen(false)} 
+      />
     </>
   );
 }

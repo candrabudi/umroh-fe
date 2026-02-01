@@ -1,5 +1,5 @@
 .carouselSection {
-  padding: var(--spacing-xl) 0;
+  padding: var(--spacing-xl) var(--spacing-md);
   background-color: #f9fbfb; /* Very subtle off-white to make cards pop */
   position: relative;
   overflow: hidden;
@@ -281,5 +281,9 @@
   }
   .card {
     flex: 0 0 320px;
+  }
+  .carouselContainer {
+    gap: 1.25rem;
+    padding-bottom: 2rem;
   }
 }
