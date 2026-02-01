@@ -1,27 +1,46 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Luxury Modern Travel - Recalibrated */
+  --primary: #1a2327; /* Richer, deeper slate with a hint of midnight blue */
+  --primary-light: #2c3e46;
+  --accent: #b4db33; /* More vibrant, "electric" lime green */
+  --accent-light: #d4f07a;
+  --secondary: #eef1f1; /* Ultra-clean silver gray */
+  
+  --background: #ffffff; /* Pure white start for maximum clarity */
+  --surface: #ffffff;
+  --text-main: #1a2327; 
+  --text-muted: #5c6e76;
+  
+  /* Luxury Sophisticated Gradients */
+  --gradient-hero: linear-gradient(165deg, #1a2327 0%, #2c3e46 100%);
+  --gradient-accent: linear-gradient(135deg, #b4db33 0%, #a2c42e 100%);
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+
+  /* Spacing - Increased for more room to breathe */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 6rem;
+  --spacing-xl: 10rem;
+  --spacing-xxl: 14rem;
+
+  /* Premium Depth Shadows */
+  --shadow-sm: 0 4px 6px -1px rgba(26, 35, 39, 0.05);
+  --shadow-md: 0 10px 15px -3px rgba(26, 35, 39, 0.08);
+  --shadow-lg: 0 20px 25px -5px rgba(26, 35, 39, 0.1);
+  --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.03);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a;
+    --surface: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
   }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 * {
@@ -30,13 +49,126 @@ body {
   margin: 0;
 }
 
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+  background: #ffffff; 
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* Ultra-Modern Animated Gradient Orbs Background */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: -2;
+  background: 
+    radial-gradient(ellipse at 10% 20%, rgba(26, 35, 39, 0.05) 0%, transparent 40%),
+    radial-gradient(ellipse at 90% 70%, rgba(180, 219, 51, 0.05) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 50%, rgba(238, 241, 241, 0.1) 0%, transparent 50%);
+  animation: gradientShift 20s ease infinite;
+  pointer-events: none;
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(3%, -3%) scale(1.05);
+  }
+  66% {
+    transform: translate(-3%, 3%) scale(0.95);
+  }
+}
+
+/* Subtle Noise Texture for Premium Feel */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.015;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-sm);
+}
+
 a {
   color: inherit;
   text-decoration: none;
+  transition: opacity 0.2s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+a:hover {
+  opacity: 0.8;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+
+/* Modern Card/Section Styling */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px; /* More modern radius */
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(22, 160, 133, 0.2);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--primary);
+  color: var(--primary);
+}
+
+.btn-outline:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.section {
+  padding: var(--spacing-lg) 0;
 }

@@ -1,0 +1,324 @@
+.section {
+  padding: var(--spacing-xxl) 0;
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 4rem;
+}
+
+.badgeLine {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--accent);
+}
+
+.badgeText {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--primary);
+  opacity: 0.6;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin: 0;
+  line-height: 1;
+  letter-spacing: -3px;
+}
+
+.accentText {
+  color: var(--accent);
+}
+
+.sliderControls {
+  display: flex;
+  gap: 1rem;
+}
+
+.slideBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid var(--secondary);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slideBtn:hover {
+  background: var(--primary);
+  color: var(--accent);
+  border-color: var(--primary);
+}
+
+/* Horizontal Slider */
+.sliderWrapper {
+  margin: 0 -1rem;
+  padding: 0 1rem;
+}
+
+.bentoSlider {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 2rem 0;
+  scrollbar-width: none; /* Hide scrollbar Firefox */
+}
+
+.bentoSlider::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari */
+}
+
+.item {
+  flex: 0 0 auto;
+  width: 350px; /* Fixed width for slider items */
+  height: 450px;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Bento Sizing Override for Slider */
+.large, .tall, .wide, .medium {
+  width: 350px;
+  height: 450px;
+}
+
+.imageInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  background-color: var(--secondary);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26, 35, 39, 0.9) 0%, rgba(26, 35, 39, 0.2) 50%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.overlayTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tag {
+  background: var(--accent);
+  color: var(--primary);
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.iconBtn {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.imgTitle {
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.imgLoc {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.item:hover .imageInner {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+.item:hover .image {
+  transform: scale(1.1);
+}
+
+.item:hover .overlay {
+  opacity: 1;
+}
+
+/* Lightbox UI */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(26, 35, 39, 0.98);
+  backdrop-filter: blur(15px);
+  z-index: 3000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s ease;
+}
+
+.lightboxHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.lightboxMeta h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  margin: 0;
+}
+
+.lightboxMeta p {
+  color: var(--accent);
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+.closeBtn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.closeBtn:hover {
+  background: var(--accent);
+  color: var(--primary);
+}
+
+.lightboxMain {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  padding: 0 4rem;
+}
+
+.navBtn {
+  background: none;
+  border: none;
+  color: white;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navBtn:hover {
+  opacity: 1;
+  color: var(--accent);
+}
+
+.lightboxContent {
+  position: relative;
+  flex: 1;
+  height: 70vh;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.fullImage {
+  object-fit: contain;
+}
+
+.lightboxFooter {
+  position: absolute;
+  bottom: 2rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .item {
+    width: 280px;
+    height: 380px;
+  }
+  .lightboxMain {
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+  .navBtn {
+    display: none; /* Hide on mobile to focus on swipe/tap */
+  }
+  .lightboxHeader {
+    padding: 1.5rem;
+  }
+}

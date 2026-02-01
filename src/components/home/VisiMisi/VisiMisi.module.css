@@ -1,0 +1,147 @@
+.section {
+  padding: var(--spacing-xxl) 0;
+  background-color: #f8fafb;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 6rem;
+  align-items: flex-start;
+}
+
+.badgeLine {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.badgeText {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--primary);
+  opacity: 0.6;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 2rem;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.accentText {
+  color: var(--accent);
+}
+
+.visiBox {
+  background: var(--primary);
+  padding: 3rem;
+  border-radius: 32px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.visiBox::before {
+  content: '"';
+  position: absolute;
+  top: -20px;
+  left: 10px;
+  font-size: 10rem;
+  color: rgba(180, 219, 51, 0.1);
+  font-family: serif;
+}
+
+.visiText {
+  font-size: 1.5rem;
+  color: #ffffff;
+  line-height: 1.6;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+.misiGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.misiItem {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.misiItem:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.misiIcon {
+  width: 48px;
+  height: 48px;
+  background: var(--secondary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.misiItem:hover .misiIcon {
+  background: var(--primary);
+  color: var(--accent);
+}
+
+.misiText {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.75rem;
+  }
+  .misiGrid {
+    grid-template-columns: 1fr;
+  }
+  .visiText {
+    font-size: 1.25rem;
+  }
+}

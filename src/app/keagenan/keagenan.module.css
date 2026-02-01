@@ -1,0 +1,421 @@
+/* keagenan.module.css */
+.pageWrapper {
+  background: #ffffff;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+/* Hero Section */
+.hero {
+  padding: 12rem 0 6rem;
+  background: var(--gradient-hero);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.badgeLine {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.badgeText {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--accent);
+}
+
+.heroTitle {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -3px;
+  margin-bottom: 2rem;
+}
+
+.accentText {
+  color: var(--accent);
+}
+
+.heroDesc {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  max-width: 700px;
+  opacity: 0.8;
+}
+
+/* Intro Section */
+.intro {
+  padding: var(--spacing-xl) 0;
+}
+
+.introGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: -1.5px;
+}
+
+.text {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+.objectiveGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.objItem {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.objIcon {
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 0.25rem;
+}
+
+.objItem h4 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+  color: var(--primary);
+}
+
+.objItem p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.introVisual {
+  position: relative;
+}
+
+.visualCard {
+  background: var(--primary);
+  padding: 3rem;
+  border-radius: 32px;
+  color: white;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.1);
+}
+
+.visualIcon {
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.visualCard h3 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.visualCard p {
+  opacity: 0.7;
+  line-height: 1.6;
+}
+
+/* Levels Section */
+.levels {
+  padding: var(--spacing-xl) 0;
+  background: #f9fbfb;
+}
+
+.sectionHeaderCenter {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionSubtitle {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+.levelGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.levelCard {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 24px;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.levelCard:hover {
+  transform: translateY(-10px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg);
+}
+
+.levelIcon {
+  width: 50px;
+  height: 50px;
+  background: var(--secondary);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.levelCard:hover .levelIcon {
+  background: var(--accent);
+}
+
+.levelName {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.levelRange {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+.levelDesc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+/* Bonus Section */
+.bonus {
+  padding: var(--spacing-xl) 0;
+}
+
+.bonusGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 3rem;
+}
+
+.bonusCardLarge {
+  background: #ffffff;
+  padding: 3.5rem;
+  border-radius: 32px;
+  border: 1px solid var(--secondary);
+}
+
+.bonusHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--primary);
+}
+
+.bonusHeader h3 {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  margin: 0;
+}
+
+.bonusIntro {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 2.5rem;
+}
+
+.percentageGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.percItem {
+  background: var(--secondary);
+  padding: 1.5rem;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.percItem span {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.percItem strong {
+  font-size: 2rem;
+  color: var(--primary);
+}
+
+.exampleBox {
+  background: rgba(180, 219, 51, 0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border-left: 4px solid var(--accent);
+  font-size: 0.95rem;
+  color: var(--primary);
+}
+
+.bonusList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.bonusListItem {
+  background: #f8fafb;
+  padding: 2rem;
+  border-radius: 20px;
+  display: flex;
+  gap: 1.5rem;
+  border: 1px solid rgba(0,0,0,0.02);
+}
+
+.bonusListIcon {
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+.bonusListItem h4 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.bonusListItem p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.mitraBonus {
+  margin-top: 3rem;
+  background: var(--primary);
+  color: white;
+  padding: 3rem;
+  border-radius: 24px;
+}
+
+.mitraContent {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mitraIcon {
+  color: var(--accent);
+}
+
+.mitraContent h3 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.mitraContent p {
+  opacity: 0.7;
+}
+
+/* CTA Section */
+.cta {
+  padding: 6rem 0 10rem;
+}
+
+.ctaBox {
+  background: var(--accent);
+  padding: 5rem;
+  border-radius: 40px;
+  text-align: center;
+  color: var(--primary);
+}
+
+.ctaBox h2 {
+  font-family: var(--font-display);
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: -2px;
+}
+
+.ctaBox p {
+  font-size: 1.25rem;
+  margin-bottom: 3rem;
+  font-weight: 600;
+}
+
+.primaryBtn {
+  background: var(--primary);
+  color: var(--accent);
+  padding: 1.5rem 3rem;
+  border-radius: 16px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primaryBtn:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 1024px) {
+  .heroTitle { font-size: 3.5rem; }
+  .introGrid, .bonusGrid { grid-template-columns: 1fr; }
+  .levelGrid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .heroTitle { font-size: 2.75rem; }
+  .ctaBox { padding: 3rem 1.5rem; }
+  .ctaBox h2 { font-size: 2.25rem; }
+  .levelGrid { grid-template-columns: 1fr; }
+}
